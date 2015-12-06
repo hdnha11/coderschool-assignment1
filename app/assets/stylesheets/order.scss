@@ -1,5 +1,13 @@
 .content-container {
-    .list-group {
-        margin-bottom: 20px;
+    .table {
+        font-weight: normal;
+        tr {
+            th:nth-child(1),
+            th:nth-child(2),
+            td:nth-child(1),
+            td:nth-child(2) {
+                text-align: center;
+            }
+        }
     }
 }

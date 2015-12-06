@@ -1,12 +1,29 @@
 <div class="container content-container">
     <h1>Orders</h1>
 
-    <ul class="list-group">
-        <% @orders.each do |order| %>
-        <li class="list-group-item">
-            <%= link_to "Order ##{order.id}", order %>
-        </li>
-        <% end %>
-    </ul>
+    <table class="table">
+        <thead class="thead-default">
+            <tr>
+                <th>#</th>
+                <th>Order Number</th>
+                <th>Customer Name</th>
+                <th>Menu Item</th>
+                <th>Total Cost</th>
+                <th>Submit date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @orders.each_with_index do |order, index| %>
+                <tr>
+                    <td><%= index %></td>
+                    <td><%= link_to "##{order.id}", order %></td>
+                    <td><%= order.customer_name %></td>
+                    <td><%= order.menu_item.name %></td>
+                    <td><%= number_to_currency order.total_cost, unit: 'VND', format: '%n %u' %> </td>
+                    <td><%= order.created_at.strftime("%b %d, %Y") %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
 
 </div>
