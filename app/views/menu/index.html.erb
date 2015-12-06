@@ -1,0 +1,34 @@
+<div class="container content-container menu-container">
+    <h1>We have</h1>
+
+    <ul class="nav nav-tabs">
+        <% @sections.each do |section| %>
+            <li class="nav-item">
+                <%= link_to section, {controller: 'menu', section: section, search: @search}, class: "nav-link #{@section == section ? 'active' : ''}" %>
+            </li>
+        <% end %>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Sort by</a>
+            <div class="dropdown-menu">
+                <%= link_to "Name A-Z", {controller: 'menu', section: @section, search: @search, sort: {field: 'name', order: 'asc'}}, class: "dropdown-item" %>
+                <%= link_to "Name Z-A", {controller: 'menu', section: @section, search: @search, sort: {field: 'name', order: 'desc'}}, class: "dropdown-item" %>
+                <%= link_to "Price low to high", {controller: 'menu', section: @section, search: @search, sort: {field: 'price', order: 'asc'}}, class: "dropdown-item" %>
+                <%= link_to "Price high to low", {controller: 'menu', section: @section, search: @search, sort: {field: 'price', order: 'desc'}}, class: "dropdown-item" %>
+            </div>
+        </li>
+
+        <%= form_tag '/menu', method: :get, class: "form-inline navbar-form pull-right" do %>
+            <%= text_field_tag :search, params[:search] || @search, class: "form-control", placeholder: "Search" %>
+            <%= hidden_field_tag :section, params[:section] || @section %>
+        <% end %>
+    </ul>
+
+
+    <% @items.each_slice(3) do |items| %>
+        <div class="row">
+        <%= render items %>
+        </div>
+    <% end %>
+
+</div>
