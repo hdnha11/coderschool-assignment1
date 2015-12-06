@@ -13,7 +13,7 @@
         <a class="navbar-brand" href="/home">Home</a>
         <ul class="nav navbar-nav pull-right">
             <li class="nav-item">
-                <a class="nav-link" href="#">Orders (0)</a>
+                <%= link_to 'Orders', {controller: 'orders', action: 'index'}, class: 'nav-link' %>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Items</a>

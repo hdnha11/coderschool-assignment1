@@ -1,8 +1,5 @@
 .content-container {
     margin-top: 50px;
-}
-
-.menu-container {
     h1 {
         margin-bottom: 20px;
         padding-top: 20px;
@@ -27,6 +24,9 @@
             }
         }
     }
+}
+
+.menu-container {
     .nav-tabs {
         @media(max-width: 768px) {
             .form-inline {

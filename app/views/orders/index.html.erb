@@ -1,0 +1,12 @@
+<div class="container content-container">
+    <h1>Orders</h1>
+
+    <ul class="list-group">
+        <% @orders.each do |order| %>
+        <li class="list-group-item">
+            <%= link_to "Order ##{order.id}", order %>
+        </li>
+        <% end %>
+    </ul>
+
+</div>

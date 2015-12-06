@@ -1,0 +1,37 @@
+<div class="container content-container">
+    <h1>Order for:</h1>
+
+    <div class="row">
+        <%= render @item, options: {show_order: false} %>
+
+        <div class="col-md-8">
+            <%= form_for @order do |f| %>
+                <fieldset class="form-group">
+                    <%= f.label :name %>
+                    <%= f.text_field :customer_name, class: "form-control", placeholder: "Your name" %>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <%= f.label :phone_number %>
+                    <%= f.text_field :phone_number, class: "form-control", placeholder: "Your phone number" %>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <%= f.label :address %>
+                    <%= f.text_area :address, class: "form-control", rows: 4 %>
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <%= f.label :total_cost %>
+                    <p class="form-control-static text-danger"><%= number_to_currency @order.total_cost, unit: 'VND', format: '%n %u' %></p>
+                    <small class="text-muted">This price has included <%= number_to_currency @order.delivery_cost, unit: 'VND', format: '%n %u' %> delivery cost</small>
+                </fieldset>
+
+                <%= hidden_field_tag :menu_item_id, @item.id %>
+
+                <button type="submit" class="btn btn-primary">Order</button>
+            <% end %>
+        </div>
+
+    </div>
+</div>

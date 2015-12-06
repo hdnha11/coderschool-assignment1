@@ -27,7 +27,7 @@
 
     <% @items.each_slice(3) do |items| %>
         <div class="row">
-        <%= render items %>
+        <%= render items, options: {show_order: true} %>
         </div>
     <% end %>
 

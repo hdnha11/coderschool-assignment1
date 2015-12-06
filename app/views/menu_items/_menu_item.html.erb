@@ -7,7 +7,7 @@
         </div>
         <div class="card-block order-bar">
             <a href="#" class="btn text-success price"><%= number_to_currency menu_item.price, unit: 'VND', format: '%n %u' %></a>
-            <a href="#" class="btn btn-primary-outline pull-right">Order</a>
+            <%= link_to "Order", {controller: "orders", action: "new", menu_item: menu_item.id}, class: "btn btn-primary-outline pull-right" if options[:show_order] %>
         </div>
     </div>
 </div>
