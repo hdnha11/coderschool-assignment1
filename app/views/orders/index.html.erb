@@ -15,7 +15,7 @@
         <tbody>
             <% @orders.each_with_index do |order, index| %>
                 <tr>
-                    <td><%= index %></td>
+                    <td><%= index + 1 %></td>
                     <td><%= link_to "##{order.id}", order %></td>
                     <td><%= order.customer_name %></td>
                     <td><%= order.menu_item.name %></td>
